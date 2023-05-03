@@ -34,6 +34,9 @@ export async function homeLoader() {
   //還沒創建角色時放一個空的array
   if (!characters) characters = [];
 
+  //還沒創建item時放一個預設值
+  if (!items) items = { daily: [], weekly: [] };
+
   //當每週的禮拜一日期不同時 &&過了5點時重置每週任務
   if (
     dayjs().weekday(1).format("YYYY-MM-DD") !== resets.weeklyReset &&
