@@ -1,0 +1,375 @@
+@charset "UTF-8";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  box-sizing: border-box;
+}
+
+.homeOuter {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.homeOuter .dailyQuestOuter,
+.homeOuter .weeklyQuestOuter {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: rgba(255, 230, 183, 0.5);
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 30px 15px;
+  gap: 20px;
+}
+.homeOuter .dailyQuestOuter::after,
+.homeOuter .weeklyQuestOuter::after {
+  content: attr(data-title);
+  left: 10px;
+  position: absolute;
+  top: -15px;
+  background: white;
+  font-size: 20px;
+  padding: 0 5px;
+  margin: 0 auto;
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.checkItemOuter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: solid black;
+}
+.checkItemOuter::after {
+  content: attr(data-title);
+  left: 50%;
+  transform: translate(-50%, 0%);
+  white-space: nowrap;
+  position: absolute;
+  top: -15px;
+  background: white;
+  font-size: 20px;
+  padding: 0 5px;
+  margin: 0 auto;
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+}
+.checkItemOuter .itemInner {
+  display: flex;
+  position: relative;
+  gap: 10px;
+}
+.checkItemOuter .itemInner:hover {
+  background: lightgray;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.checkItemOuter .itemInner .itemCheckContainer {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.checkItemOuter .itemInner .checked {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.checkItemOuter .itemInner input[type=checkbox] {
+  pointer-events: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 24px;
+  height: 24px;
+  background: white;
+  border: solid gray 2px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.checkItemOuter .itemInner input[type=checkbox]:checked {
+  background: lightgreen;
+  border: none;
+}
+
+.countItemOuter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid black;
+}
+.countItemOuter::after {
+  content: attr(data-title);
+  left: 50%;
+  transform: translate(-50%, 0%);
+  white-space: nowrap;
+  position: absolute;
+  top: -15px;
+  background: white;
+  font-size: 20px;
+  padding: 0 5px;
+  margin: 0 auto;
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+}
+.countItemOuter .itemInner .itemCountContainer {
+  display: flex;
+  gap: 15px;
+}
+.countItemOuter .itemInner .itemCountContainer input[type=number] {
+  width: 35px;
+  border: solid black 2px;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+}
+.countItemOuter .itemInner .itemCountContainer input[type=number]::-webkit-inner-spin-button, .countItemOuter .itemInner .itemCountContainer input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modalOuter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  background: rgba(77, 77, 77, 0.5);
+  z-index: 100;
+}
+.modalOuter .createCharacterContainer {
+  background: white;
+  padding: 30px;
+  border-radius: 5px;
+}
+.modalOuter .createCharacterContainer input {
+  border: solid black 2px;
+  margin-right: 5px;
+  padding: 5px;
+}
+.modalOuter .createItemContainer {
+  background: white;
+  padding: 30px;
+  border-radius: 5px;
+}
+.modalOuter .createItemContainer .itemOptionContainer {
+  border: solid black 2px;
+  padding: 5px;
+}
+.modalOuter .createItemContainer .itemOptionContainer .itemTypeContainer {
+  display: flex;
+  gap: 10px;
+}
+.modalOuter .createItemContainer .itemOptionContainer .itemTypeContainer .radioContainer {
+  display: flex;
+  gap: 5px;
+}
+.modalOuter .createItemContainer .itemOptionContainer input[type=text] {
+  border: solid black 2px;
+  margin-right: 5px;
+  padding: 5px;
+  width: 100%;
+}
+.modalOuter .createItemContainer button[type=submit] {
+  width: 100%;
+  border: solid black;
+  margin-top: 5px;
+}
+
+.charactersOuter {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.charactersOuter .charactersContainer {
+  position: relative;
+  background: rgba(255, 230, 183, 0.5);
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 30px 15px 15px;
+  min-width: 175px;
+}
+.charactersOuter .charactersContainer::after {
+  content: "目前角色";
+  left: 10px;
+  position: absolute;
+  top: -15px;
+  background: white;
+  font-size: 20px;
+  padding: 0 5px;
+  margin: 0 auto;
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+}
+.charactersOuter .charactersContainer .characterLists {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.charactersOuter .charactersContainer .characterLists .characterOuter {
+  display: flex;
+  justify-content: center;
+  flex-basis: 20%;
+  background: white;
+  border: solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+.charactersOuter .charactersContainer .characterLists .characterOuter .characterContainer {
+  position: relative;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0;
+  width: 100%;
+  padding-bottom: 20%;
+}
+.charactersOuter .charactersContainer .characterLists .characterOuter .characterContainer .characterName {
+  flex-basis: 55%;
+  text-align: end;
+  white-space: nowrap;
+}
+.charactersOuter .charactersContainer .characterLists .characterOuter .characterContainer .deleteButton {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.charactersOuter .charactersContainer .characterLists .characterOuter .characterContainer .deleteButton button:hover {
+  color: red;
+}
+.charactersOuter .charactersContainer .addCharacterContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+.charactersOuter .charactersContainer .addCharacterContainer button {
+  background: black;
+  color: white;
+  padding: 8px;
+  border: solid black 2px;
+  border-radius: 8px;
+}
+.charactersOuter .charactersContainer .addCharacterContainer button:hover {
+  background: white;
+  color: black;
+}
+
+.itemsOuter {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.itemsOuter .itemsContainer {
+  position: relative;
+  background: rgba(255, 230, 183, 0.5);
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 30px 15px 15px;
+  min-width: 175px;
+}
+.itemsOuter .itemsContainer::after {
+  content: "項目";
+  left: 10px;
+  position: absolute;
+  top: -15px;
+  background: white;
+  font-size: 20px;
+  padding: 0 5px;
+  margin: 0 auto;
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+}
+.itemsOuter .itemsContainer .daily,
+.itemsOuter .itemsContainer .weekly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-block: 10px;
+}
+.itemsOuter .itemsContainer .daily .itemOuter,
+.itemsOuter .itemsContainer .weekly .itemOuter {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-basis: 20%;
+  background: white;
+  border: solid black;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+.itemsOuter .itemsContainer .daily .itemOuter::after,
+.itemsOuter .itemsContainer .weekly .itemOuter::after {
+  position: absolute;
+  bottom: -3px;
+  right: -3px;
+  content: attr(data-type);
+  background: pink;
+  font-size: 11px;
+  padding: 0px 3px;
+  border: solid black;
+  border-radius: 5px 0 0 0;
+}
+.itemsOuter .itemsContainer .daily .itemOuter .itemContainer,
+.itemsOuter .itemsContainer .weekly .itemOuter .itemContainer {
+  position: relative;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 0;
+  width: 100%;
+  padding-bottom: 25%;
+}
+.itemsOuter .itemsContainer .daily .itemOuter .itemContainer .itemTitle,
+.itemsOuter .itemsContainer .weekly .itemOuter .itemContainer .itemTitle {
+  flex-basis: 55%;
+  text-align: end;
+  white-space: nowrap;
+}
+.itemsOuter .itemsContainer .daily .itemOuter .deleteButton,
+.itemsOuter .itemsContainer .weekly .itemOuter .deleteButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.itemsOuter .itemsContainer .daily .itemOuter .deleteButton button:hover,
+.itemsOuter .itemsContainer .weekly .itemOuter .deleteButton button:hover {
+  color: red;
+}
+.itemsOuter .itemsContainer .addItemContainer {
+  text-align: center;
+  margin-top: 20px;
+}
+.itemsOuter .itemsContainer .addItemContainer button {
+  background: black;
+  color: white;
+  padding: 8px;
+  border: solid black 2px;
+  border-radius: 8px;
+}
+.itemsOuter .itemsContainer .addItemContainer button:hover {
+  background: white;
+  color: black;
+}/*# sourceMappingURL=styles.css.map */

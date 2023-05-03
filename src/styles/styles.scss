@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+@mixin title {
+  position: absolute;
+  top: -15px;
+  background: white;
+  font-size: 20px;
+  padding: 0 5px;
+  margin: 0 auto;
+  border: solid black;
+  border-width: 2px;
+  border-radius: 5px;
+}
+
+.homeOuter {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  .dailyQuestOuter,
+  .weeklyQuestOuter {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: rgba(255, 230, 183, 0.5);
+    border: solid black;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 30px 15px;
+    gap: 20px;
+    &::after {
+      content: attr(data-title);
+      left: 10px;
+      @include title;
+    }
+  }
+}
+
+//check type
+.checkItemOuter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: solid black;
+  &::after {
+    content: attr(data-title);
+    left: 50%;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+    @include title;
+  }
+  .itemInner {
+    display: flex;
+    position: relative;
+    gap: 10px;
+    &:hover {
+      background: lightgray;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .itemCheckContainer {
+      position: relative;
+      width: 24px;
+      height: 24px;
+    }
+    .checked {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    input[type="checkbox"] {
+      pointer-events: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      background: white;
+      border: solid gray 2px;
+      border-radius: 50%;
+      cursor: pointer;
+      &:checked {
+        background: lightgreen;
+        border: none;
+      }
+    }
+  }
+}
+
+//count type
+.countItemOuter {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid black;
+  &::after {
+    content: attr(data-title);
+    left: 50%;
+    transform: translate(-50%, 0%);
+    white-space: nowrap;
+    @include title;
+  }
+  .itemInner {
+    .itemCountContainer {
+      display: flex;
+      gap: 15px;
+      input[type="number"] {
+        width: 35px;
+        border: solid black 2px;
+        border-radius: 5px;
+        outline: none;
+        text-align: center;
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@import "./CharacterLists";

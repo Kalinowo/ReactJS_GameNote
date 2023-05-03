@@ -1,0 +1,212 @@
+.modalOuter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  inset: 0;
+  background: rgba(77, 77, 77, 0.5);
+  z-index: 100;
+  .createCharacterContainer {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    input {
+      border: solid black 2px;
+      margin-right: 5px;
+      padding: 5px;
+    }
+  }
+  .createItemContainer {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    .itemOptionContainer {
+      border: solid black 2px;
+      padding: 5px;
+      .itemTypeContainer {
+        display: flex;
+        gap: 10px;
+        .radioContainer {
+          display: flex;
+          gap: 5px;
+        }
+      }
+      input[type="text"] {
+        border: solid black 2px;
+        margin-right: 5px;
+        padding: 5px;
+        width: 100%;
+      }
+    }
+    button[type="submit"] {
+      width: 100%;
+      border: solid black;
+      margin-top: 5px;
+    }
+  }
+}
+
+.charactersOuter {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  .charactersContainer {
+    position: relative;
+    background: rgba(255, 230, 183, 0.5);
+    border: solid black;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 30px 15px 15px;
+    min-width: 175px;
+    &::after {
+      content: "目前角色";
+      left: 10px;
+      @include title;
+    }
+    .characterLists {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      .characterOuter {
+        display: flex;
+        justify-content: center;
+        flex-basis: 20%;
+        background: white;
+        border: solid black;
+        border-radius: 10px;
+        padding: 10px;
+        .characterContainer {
+          position: relative;
+          top: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 0;
+          width: 100%;
+          padding-bottom: 20%;
+          .characterName {
+            flex-basis: 55%;
+            text-align: end;
+            white-space: nowrap;
+          }
+          .deleteButton {
+            flex-grow: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            button {
+              &:hover {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+    }
+    .addCharacterContainer {
+      text-align: center;
+      margin-top: 20px;
+      button {
+        background: black;
+        color: white;
+        padding: 8px;
+        border: solid black 2px;
+        border-radius: 8px;
+        &:hover {
+          background: white;
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.itemsOuter {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  .itemsContainer {
+    position: relative;
+    background: rgba(255, 230, 183, 0.5);
+    border: solid black;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 30px 15px 15px;
+    min-width: 175px;
+    &::after {
+      content: "項目";
+      left: 10px;
+      @include title;
+    }
+    .daily,
+    .weekly {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-block: 10px;
+      .itemOuter {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-basis: 20%;
+        background: white;
+        border: solid black;
+        border-radius: 10px;
+        padding: 10px;
+        overflow: hidden;
+        &::after {
+          position: absolute;
+          bottom: -3px;
+          right: -3px;
+          content: attr(data-type);
+          background: pink;
+          font-size: 11px;
+          padding: 0px 3px;
+          border: solid black;
+          border-radius: 5px 0 0 0;
+        }
+        .itemContainer {
+          position: relative;
+          top: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 0;
+          width: 100%;
+          padding-bottom: 25%;
+          .itemTitle {
+            flex-basis: 55%;
+            text-align: end;
+            white-space: nowrap;
+          }
+        }
+        .deleteButton {
+          position: absolute;
+          top: 0;
+          right: 0;
+          button {
+            &:hover {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+    .addItemContainer {
+      text-align: center;
+      margin-top: 20px;
+      button {
+        background: black;
+        color: white;
+        padding: 8px;
+        border: solid black 2px;
+        border-radius: 8px;
+        &:hover {
+          background: white;
+          color: black;
+        }
+      }
+    }
+  }
+}
