@@ -1,4 +1,4 @@
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import localforage from "localforage";
 import CountCharacterLists from "./CountCharacterLists";
 

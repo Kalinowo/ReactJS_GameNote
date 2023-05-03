@@ -14,7 +14,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   let location = useLocation();
-  let navigate = useNavigate();
+
   return (
     <>
       <Disclosure as="nav" className="bg-gray-800">
