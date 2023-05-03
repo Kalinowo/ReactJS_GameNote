@@ -20,17 +20,6 @@ const resetDefault = {
   weeklyReset: "",
 };
 
-const dailyDefault = {
-  themeActivity: false,
-};
-
-let weeklyDefault = {
-  building: false,
-  dreamMachine: 0,
-  pelican: false,
-  security: false,
-};
-
 export async function homeLoader() {
   let resets = await localforage.getItem("resets");
 

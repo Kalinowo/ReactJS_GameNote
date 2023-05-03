@@ -40,13 +40,17 @@ export default function Items(props) {
                   <div>每日任務</div>
                   <div className="daily">
                     {loadedItems.daily.map((item) => (
-                      <ItemContainer item={item} type="daily" />
+                      <React.Fragment key={item.term}>
+                        <ItemContainer item={item} type="daily" />
+                      </React.Fragment>
                     ))}
                   </div>
                   <div>每週任務</div>
                   <div className="weekly">
                     {loadedItems.weekly.map((item) => (
-                      <ItemContainer item={item} type="weekly" />
+                      <React.Fragment key={item.term}>
+                        <ItemContainer item={item} type="weekly" />
+                      </React.Fragment>
                     ))}
                   </div>
                 </>

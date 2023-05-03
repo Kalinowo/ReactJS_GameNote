@@ -1,8 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 import localforage from "localforage";
-import { defer, useLoaderData, Await } from "react-router-dom";
+import { defer, useLoaderData } from "react-router-dom";
 
-import CreateCharacter from "../components/charactersPage/CreateCharacter";
 import Character from "../components/charactersPage/Characters";
 import Items from "../components/charactersPage/Items";
 
