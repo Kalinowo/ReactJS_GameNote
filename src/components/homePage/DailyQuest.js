@@ -7,6 +7,7 @@ export function dailyAction() {}
 
 export default function DailyQuest() {
   const { items } = useLoaderData();
+
   // const dailyQuestChecked = [
   //   {
   //     title: "主題活動（10墨晶）",
@@ -14,6 +15,7 @@ export default function DailyQuest() {
   //     type: "daily",
   //   },
   // ];
+
   return (
     <>
       <div className="dailyQuestOuter" data-title="每日任務">

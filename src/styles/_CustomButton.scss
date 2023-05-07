@@ -1,0 +1,80 @@
+.addContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .button {
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: system-ui;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(to bottom, #232526, #414345);
+    padding: 0.75em 1em;
+    border: 0;
+    border-radius: 1.25rem;
+    text-shadow: 1px 1px 3px black;
+  }
+  .glow-effect {
+    --glow-line-color: #fff;
+    --glow-line-thickness: 2px;
+    --glow-blur-color: #fff;
+    --glow-blur-size: 10px;
+    --glow-offset: 8px;
+    --animation-speed: 1200ms;
+    //do not change, used for calc
+    --container-offset: 100px;
+    position: relative;
+    &:is(:hover, :focus) .glow-container {
+      animation: glow-visibility var(--animation-speed) ease-in-out;
+    }
+    .glow-container {
+      pointer-events: none;
+      position: absolute;
+      inset: calc(var(--container-offset) / -2);
+      width: calc(100% + var(--container-offset));
+      height: calc(100% + var(--container-offset));
+      opacity: 0;
+      // outline:3px solid blue;
+      .glow-blur,
+      .glow-line {
+        width: calc(100% - var(--container-offset) + var(--glow-offset));
+        height: calc(100% - var(--container-offset) + var(--glow-offset));
+        rx: 1.25rem;
+        x: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+        y: calc((var(--container-offset) / 2) + calc(var(--glow-offset) / -2));
+        fill: transparent;
+        stroke: black;
+        stroke-width: 5px;
+        stroke-dasharray: 20px 30px;
+      }
+      .glow-blur {
+        filter: blur(5px);
+        stroke: var(--glow-blur-color);
+        stroke-width: var(--glow-blur-size);
+      }
+      .glow-line {
+        stroke: var(--glow-line-color);
+        stroke-width: var(--glow-line-thickness);
+      }
+    }
+    // &:hover .glow-blur, &:hover .glow-line{
+    //   stroke-dashoffset:-65px;
+    // } combined as below
+    &:is(:hover, :focus) :is(.glow-blur, .glow-line) {
+      stroke-dashoffset: -75px;
+      transition: stroke-dashoffset var(--animation-speed) ease-in;
+    }
+  }
+}
+
+@keyframes glow-visibility {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  25%,
+  75% {
+    opacity: 1;
+  }
+}

@@ -4,6 +4,7 @@ import { Await, Form, redirect } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
 import CreateCharacter from "./CreateCharacter";
+import CustomButton from "../UI/CustomButton";
 
 export async function characterDelete({ params }) {
   let characters = await localforage.getItem("characterLists");
@@ -53,9 +54,7 @@ export default function Character(props) {
               )}
             </Await>
           </Suspense>
-          <div className="addCharacterContainer">
-            <button onClick={() => toggleModal()}>新增角色</button>
-          </div>
+          <CustomButton onClick={toggleModal} />
         </div>
       </div>
     </>

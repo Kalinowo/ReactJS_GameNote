@@ -52,7 +52,7 @@
   padding: 20px;
   .charactersContainer {
     position: relative;
-    background: rgba(255, 230, 183, 0.5);
+    background: var(--background);
     border: solid black;
     border-width: 2px;
     border-radius: 5px;
@@ -103,21 +103,6 @@
         }
       }
     }
-    .addCharacterContainer {
-      text-align: center;
-      margin-top: 20px;
-      button {
-        background: black;
-        color: white;
-        padding: 8px;
-        border: solid black 2px;
-        border-radius: 8px;
-        &:hover {
-          background: white;
-          color: black;
-        }
-      }
-    }
   }
 }
 
@@ -127,7 +112,7 @@
   padding: 20px;
   .itemsContainer {
     position: relative;
-    background: rgba(255, 230, 183, 0.5);
+    background: var(--background);
     border: solid black;
     border-width: 2px;
     border-radius: 5px;
@@ -190,21 +175,6 @@
               color: red;
             }
           }
-        }
-      }
-    }
-    .addItemContainer {
-      text-align: center;
-      margin-top: 20px;
-      button {
-        background: black;
-        color: white;
-        padding: 8px;
-        border: solid black 2px;
-        border-radius: 8px;
-        &:hover {
-          background: white;
-          color: black;
         }
       }
     }

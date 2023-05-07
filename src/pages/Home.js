@@ -37,9 +37,10 @@ export async function homeLoader() {
   //還沒創建item時放一個預設值
   if (!items) items = { daily: [], weekly: [] };
 
-  //當每週的禮拜一日期不同時 &&過了5點時重置每週任務
+  //當每週的禮拜一日期不同時 &&過了5點時重置"每週任務"
   if (
     dayjs().weekday(1).format("YYYY-MM-DD") !== resets.weeklyReset &&
+    dayjs().day() !== 0 &&
     date.hour() > 4
   ) {
     resets.weeklyReset = dayjs().weekday(1).format("YYYY-MM-DD");
@@ -54,7 +55,7 @@ export async function homeLoader() {
     localforage.setItem("characterLists", characters);
   }
 
-  //當dailyReset不等於現在的時間&&大於5點時重置每日
+  //當dailyReset不等於現在的時間&&大於5點時重置"每日任務"
   if (date.format("YYYY-MM-DD") !== resets.dailyReset && date.hour() > 4) {
     characters.forEach((element) =>
       Object.keys(element.daily).forEach((v) =>

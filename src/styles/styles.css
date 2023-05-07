@@ -6,6 +6,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --background: linear-gradient(to bottom, #ddd6f3, #faaca8);
+  --background-secondary: #ffffff;
+  --background-tertiary: #2830487c;
+}
+
 .homeOuter {
   display: flex;
   flex-direction: column;
@@ -17,7 +23,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: rgba(255, 230, 183, 0.5);
+  background: var(--background);
   border: solid black;
   border-width: 2px;
   border-radius: 5px;
@@ -198,7 +204,7 @@
 }
 .charactersOuter .charactersContainer {
   position: relative;
-  background: rgba(255, 230, 183, 0.5);
+  background: var(--background);
   border: solid black;
   border-width: 2px;
   border-radius: 5px;
@@ -256,21 +262,6 @@
 .charactersOuter .charactersContainer .characterLists .characterOuter .characterContainer .deleteButton button:hover {
   color: red;
 }
-.charactersOuter .charactersContainer .addCharacterContainer {
-  text-align: center;
-  margin-top: 20px;
-}
-.charactersOuter .charactersContainer .addCharacterContainer button {
-  background: black;
-  color: white;
-  padding: 8px;
-  border: solid black 2px;
-  border-radius: 8px;
-}
-.charactersOuter .charactersContainer .addCharacterContainer button:hover {
-  background: white;
-  color: black;
-}
 
 .itemsOuter {
   display: flex;
@@ -279,7 +270,7 @@
 }
 .itemsOuter .itemsContainer {
   position: relative;
-  background: rgba(255, 230, 183, 0.5);
+  background: var(--background);
   border: solid black;
   border-width: 2px;
   border-radius: 5px;
@@ -358,18 +349,77 @@
 .itemsOuter .itemsContainer .weekly .itemOuter .deleteButton button:hover {
   color: red;
 }
-.itemsOuter .itemsContainer .addItemContainer {
-  text-align: center;
-  margin-top: 20px;
+
+.addContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.itemsOuter .itemsContainer .addItemContainer button {
-  background: black;
+.addContainer .button {
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: system-ui;
+  font-weight: 700;
   color: white;
-  padding: 8px;
-  border: solid black 2px;
-  border-radius: 8px;
+  background: linear-gradient(to bottom, #232526, #414345);
+  padding: 0.75em 1em;
+  border: 0;
+  border-radius: 1.25rem;
+  text-shadow: 1px 1px 3px black;
 }
-.itemsOuter .itemsContainer .addItemContainer button:hover {
-  background: white;
-  color: black;
+.addContainer .glow-effect {
+  --glow-line-color: #fff;
+  --glow-line-thickness: 2px;
+  --glow-blur-color: #fff;
+  --glow-blur-size: 10px;
+  --glow-offset: 8px;
+  --animation-speed: 1200ms;
+  --container-offset: 100px;
+  position: relative;
+}
+.addContainer .glow-effect:is(:hover, :focus) .glow-container {
+  animation: glow-visibility var(--animation-speed) ease-in-out;
+}
+.addContainer .glow-effect .glow-container {
+  pointer-events: none;
+  position: absolute;
+  inset: calc(var(--container-offset) / -2);
+  width: calc(100% + var(--container-offset));
+  height: calc(100% + var(--container-offset));
+  opacity: 0;
+}
+.addContainer .glow-effect .glow-container .glow-blur,
+.addContainer .glow-effect .glow-container .glow-line {
+  width: calc(100% - var(--container-offset) + var(--glow-offset));
+  height: calc(100% - var(--container-offset) + var(--glow-offset));
+  rx: 1.25rem;
+  x: calc(var(--container-offset) / 2 + var(--glow-offset) / -2);
+  y: calc(var(--container-offset) / 2 + var(--glow-offset) / -2);
+  fill: transparent;
+  stroke: black;
+  stroke-width: 5px;
+  stroke-dasharray: 20px 30px;
+}
+.addContainer .glow-effect .glow-container .glow-blur {
+  filter: blur(5px);
+  stroke: var(--glow-blur-color);
+  stroke-width: var(--glow-blur-size);
+}
+.addContainer .glow-effect .glow-container .glow-line {
+  stroke: var(--glow-line-color);
+  stroke-width: var(--glow-line-thickness);
+}
+.addContainer .glow-effect:is(:hover, :focus) :is(.glow-blur, .glow-line) {
+  stroke-dashoffset: -75px;
+  transition: stroke-dashoffset var(--animation-speed) ease-in;
+}
+
+@keyframes glow-visibility {
+  0%, 100% {
+    opacity: 0;
+  }
+  25%, 75% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=styles.css.map */

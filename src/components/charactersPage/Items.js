@@ -4,6 +4,7 @@ import { Await, Form, redirect } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
 import CreateItem from "./CreateItem";
+import CustomButton from "../UI/CustomButton";
 
 export async function itemDelete({ params }) {
   const { type, term } = params;
@@ -57,9 +58,7 @@ export default function Items(props) {
               )}
             </Await>
           </Suspense>
-          <div className="addItemContainer">
-            <button onClick={() => toggleModal()}>新增項目</button>
-          </div>
+          <CustomButton onClick={toggleModal} />
         </div>
       </div>
     </>
